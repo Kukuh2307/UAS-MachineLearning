@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+from streamlit import option_menu
 from streamlit_option_menu import option_menu
 
 
@@ -23,12 +24,10 @@ st.set_page_config(
 
 # sidebar
 with st.sidebar:
-    selected = st.selectbox(
-        "Menu Utama",
-        ["Prediksi Penyakit Diabetes", 'Prediksi Penyuakit Jantung', 'Prediksi Kualitas Air'],
-        index=0
-    )
+    selected = option_menu("Menu Utama", ["Prediksi Penyakit Diabetes", 'Prediksi Penyuakit Jantung','Prediksi Kualitas Air'], 
+        icons=['hospital', 'clipboard2-pulse','droplet-half'], menu_icon="cast", default_index=0)
     selected
+
 
 
 
