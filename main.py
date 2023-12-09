@@ -23,9 +23,13 @@ st.set_page_config(
 
 # sidebar
 with st.sidebar:
-    selected = option_menu("Menu Utama", ["Prediksi Penyakit Diabetes", 'Prediksi Penyuakit Jantung','Prediksi Kualitas Air'], 
-        icons=['hospital', 'clipboard2-pulse','droplet-half'], menu_icon="cast", default_index=0)
+    selected = st.selectbox(
+        "Menu Utama",
+        ["Prediksi Penyakit Diabetes", 'Prediksi Penyuakit Jantung', 'Prediksi Kualitas Air'],
+        index=0
+    )
     selected
+
 
 
 if(selected == 'Prediksi Penyakit Diabetes'):
