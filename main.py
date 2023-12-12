@@ -1,16 +1,16 @@
 import pickle
 import streamlit as st
 # from streamlit import option_menu
-# from streamlit_option_menu import option_menu
+from streamlit_option_menu import option_menu
 
 
 # set konfigurasi halaman
-st.set_page_config(
-    page_title="Machine Learning Predictions",
-    page_icon="�",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
+# st.set_page_config(
+#     page_title="Machine Learning Predictions",
+#     page_icon="�",
+#     layout="wide",
+#     initial_sidebar_state="expanded",
+# )
 
 # add custom css
 # st.markdown(
@@ -23,12 +23,18 @@ st.set_page_config(
 # )
 
 # sidebar
+# opsi 1
 with st.sidebar:
-    selected = st.radio(
-        "Menu Utama",
-        ["Prediksi Penyakit Diabetes", 'Prediksi Penyuakit Jantung', 'Prediksi Kualitas Air'],
-        index=0
-    )
+    selected = option_menu("Menu Utama", ["Prediksi Penyakit Diabetes", 'Prediksi Penyakit Jantung','Prediksi Kualitas Air'], 
+        icons=['hospital', 'clipboard2-pulse','droplet-half'], menu_icon="cast", default_index=0)
+    selected
+# opsi 2
+# with st.sidebar:
+#     selected = st.radio(
+#         "Menu Utama",
+#         ["Prediksi Penyakit Diabetes", 'Prediksi Penyuakit Jantung', 'Prediksi Kualitas Air'],
+#         index=0
+#     )
 
 
 
@@ -92,7 +98,7 @@ if(selected == 'Prediksi Penyakit Diabetes'):
     else:
         st.warning('Masukkan semua nilai atribut sebelum melakukan prediksi')
 
-if(selected == 'Prediksi Penyuakit Jantung'):
+if(selected == 'Prediksi Penyakit Jantung'):
     # Model = '/home/kisawa16/Documents/KULIAH/MACHINE LEARNING/UTS/NAIVE BAYES/naive_bayes_model.pkl'
     naiveModel = pickle.load(open('naive_bayes_model.pkl', 'rb'))
 
