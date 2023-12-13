@@ -181,9 +181,9 @@ if(selected == 'Prediksi Kualitas Air'):
         silver = st.text_input('Masukkan kadar silver')
         uranium = st.text_input('Masukkan kadar uranium')
 
-    if almunium and amonia and arsenic and barium and cadmium and chloramine and chromium and copper and flouride and bacteria and viruses and lead and nitrates and mercury and perchlorate and radium and selenium and silver and uranium:
+    if almunium and amonia and arsenic and barium and cadmium and chloramine and chromium and copper and flouride and bacteria and viruses and lead and nitrates and nitrites and mercury and perchlorate and radium and selenium and silver and uranium:
         input_data = [
-            float(age),float(amonia),float(barium),float(cadmium),float(chloramine),float(chromium),float(copper),float(flouride),float(bacteria),float(viruses),float(lead),float(nitrates),float(mercury),float(perchlorate),float(radium),float(selenium),float(silver),float(uranium)
+            float(almunium),float(amonia),float(arsenic),float(barium),float(cadmium),float(chloramine),float(chromium),float(copper),float(flouride),float(bacteria),float(viruses),float(lead),float(nitrates),float(nitrites),float(mercury),float(perchlorate),float(radium),float(selenium),float(silver),float(uranium)
         ]
 
         water_status = ''
