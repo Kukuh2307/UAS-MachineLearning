@@ -1,26 +1,6 @@
 import pickle
 import streamlit as st
-# from streamlit import option_menu
 from streamlit_option_menu import option_menu
-
-
-# set konfigurasi halaman
-# st.set_page_config(
-#     page_title="Machine Learning Predictions",
-#     page_icon="�",
-#     layout="wide",
-#     initial_sidebar_state="expanded",
-# )
-
-# add custom css
-# st.markdown(
-#     """
-#     <style>
-#     {% include 'style.css' %}
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
-# )
 
 # sidebar
 # opsi 1
@@ -55,6 +35,7 @@ if(selected == 'Prediksi Penyakit Diabetes'):
         age = st.number_input('Masukkan umur')
         hypertension = st.number_input('Masukkan Hypertension')
         heart = st.number_input('Riwayat Jantung')
+        button1 = st.button('Test Prediksi Penyakit Diabetes')
 
     with col2:
         smoking = st.selectbox(
@@ -65,8 +46,6 @@ if(selected == 'Prediksi Penyakit Diabetes'):
         bmi = st.number_input('Masukkan BMI')
         hbaic = st.number_input('Masukkan HbAIc Level')
         blood = st.number_input('Masukkan Bloood glucose level')
-
-    if gender and age and hypertension and heart and smoking and bmi and hbaic and blood :
 
         gender = 0 if gender == "Female" else 1 
 
@@ -88,17 +67,15 @@ if(selected == 'Prediksi Penyakit Diabetes'):
 
         diabetes_diagnosis = ''
 
-        if st.button('Test Prediksi Penyakit Diabetes'):
+        if button1:
             diabetes_predict = id3Model.predict([input_data])
 
             if diabetes_predict[0] == 1:
                 diabetes_diagnosis = 'Pasien terindikasi terkena penyakit diabetes'
             else:
-                diabetes_diagnosis = 'Pasien terindikasi tidak terkena penyakit diabetes'
+                diabetes_diagnosis = 'Pasien tidak terindikasi terkena penyakit diabetes'
 
         st.success(diabetes_diagnosis)
-    else:
-        st.warning('Masukkan semua nilai atribut sebelum melakukan prediksi')
 
 if(selected == 'Prediksi Penyakit Jantung'):
     # Model = '/home/kisawa16/Documents/KULIAH/MACHINE LEARNING/UTS/NAIVE BAYES/naive_bayes_model.pkl'
@@ -118,6 +95,7 @@ if(selected == 'Prediksi Penyakit Jantung'):
         chol = st.number_input('Masukkan kolesterol')
         fbs = st.number_input('Masukkan gula darah')
         restecg = st.number_input('Masukkan hasil elektrokardiografi')
+        button2 = st.button('Test Prediksi Penyakit Jantung')
 
     with col2:
         thalach = st.number_input('Masukkan denyut jantung maksimal')
@@ -128,29 +106,26 @@ if(selected == 'Prediksi Penyakit Jantung'):
         thall = st.number_input("Hasil test thallium")
 
     # Convert input values to numeric
-    if age and sex and cp and trtbps and chol and fbs and restecg and thalach and exng and oldpeak and slp and caa and thall:
-        input_data = [
+    input_data = [
             float(age), float(sex), float(cp), float(trtbps), float(chol), float(fbs),
             float(restecg), float(thalach), float(exng), float(oldpeak), float(slp), 
             float(caa), float(thall)
         ]
 
         # code prediksi
-        heart_diagnosis = ''
+    heart_diagnosis = ''
 
         # tombol prediksi
-        if st.button('Test Prediksi Penyakit Jantung'):
+    if button2:
             heart_predict = naiveModel.predict([input_data])
 
             if heart_predict[0] == 1:
                 heart_diagnosis = "Pasien terindikasi terkena penyakit jantung"
             else:
-                heart_diagnosis = "Pasien terindikasi tidak terkena penyakit jantung"
+                heart_diagnosis = "Pasien tidak terindikasi terkena penyakit jantung"
 
         # Menampilkan hasil prediksi
-        st.success(heart_diagnosis)
-    else:
-        st.warning('Masukkan semua nilai atribut sebelum melakukan prediksi.')
+    st.success(heart_diagnosis)
 
 if(selected == 'Prediksi Kualitas Air'):
     # Model = '/home/kisawa16/Documents/KULIAH/MACHINE LEARNING/UTS/KNN/knn_model.pkl'
@@ -170,6 +145,7 @@ if(selected == 'Prediksi Kualitas Air'):
         copper = st.number_input('Masukkan kadar copper')
         flouride = st.number_input('Masukkan kadar flouride')
         bacteria = st.number_input('Masukkan kadar bacteria')
+        button3 = st.button('Kalkulasi hasil Prediksi kandungan air')
 
     with col2:
         viruses = st.number_input('Masukkan kadar viruses')
@@ -183,13 +159,12 @@ if(selected == 'Prediksi Kualitas Air'):
         silver = st.number_input('Masukkan kadar silver')
         uranium = st.number_input('Masukkan kadar uranium')
 
-    if almunium and amonia and arsenic and barium and cadmium and chloramine and chromium and copper and flouride and bacteria and viruses and lead and nitrates and nitrites and mercury and perchlorate and radium and selenium and silver and uranium:
         input_data = [
             float(almunium),float(amonia),float(arsenic),float(barium),float(cadmium),float(chloramine),float(chromium),float(copper),float(flouride),float(bacteria),float(viruses),float(lead),float(nitrates),float(nitrites),float(mercury),float(perchlorate),float(radium),float(selenium),float(silver),float(uranium)
         ]
 
         water_status = ''
-        if st.button('Kalkulasi hasil Prediksi kandungan air'):
+        if button3:
             water_predict = knnModel.predict([input_data])
 
             if water_predict[0] == 1:
@@ -198,8 +173,6 @@ if(selected == 'Prediksi Kualitas Air'):
                 water_status = "Kandungan air tidak aman"
         
         st.success(water_status)
-    else:
-        st.warning("Masukkan semua nilai atribut sebelum melihat hasil prediksi")
 
 st.markdown(
     """
