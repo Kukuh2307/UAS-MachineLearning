@@ -89,8 +89,15 @@ if(selected == 'Prediksi Penyakit Jantung'):
 
     with col1:
         age = st.number_input('Masukkan Umur anda')
-        sex = st.number_input('Masukkan Jenis kelamin Male(1) Female(0)')
-        cp = st.number_input('Masukkan tipe nyeri dada range 1-4')
+        sex = st.selectbox(
+            "Pilih Jenis kelamin",
+            ['Female','Male'],
+            index=0
+        )
+        cp = st.selectbox(
+            'Masukkan tipe nyeri dada',
+            ['0','1','2','3']
+        )
         trtbps = st.number_input('Masukkan tekanan darah')
         chol = st.number_input('Masukkan kolesterol')
         fbs = st.number_input('Masukkan gula darah')
@@ -106,6 +113,7 @@ if(selected == 'Prediksi Penyakit Jantung'):
         thall = st.number_input("Hasil test thallium")
 
     # Convert input values to numeric
+    sex = 0 if sex == "Female" else 1 
     input_data = [
             float(age), float(sex), float(cp), float(trtbps), float(chol), float(fbs),
             float(restecg), float(thalach), float(exng), float(oldpeak), float(slp), 
