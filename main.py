@@ -46,7 +46,7 @@ if(selected == 'Prediksi Penyakit Diabetes'):
         hbaic = st.number_input('Masukkan HbAIc Level')
         blood = st.number_input('Masukkan Bloood glucose level')
 
-        if age >= 0 and hypertension >= 0 and heart >= 0 and bmi >= 0 and hbaic >= 0 and blood >= 0:
+    if age >= 0 and hypertension >= 0 and heart >= 0 and bmi >= 0 and hbaic >= 0 and blood >= 0:
             # with col3:
             button1 = st.button('Test Prediksi Penyakit Diabetes')
             gender = 0 if gender == "Female" else 1 
@@ -78,7 +78,7 @@ if(selected == 'Prediksi Penyakit Diabetes'):
                         diabetes_diagnosis = 'Pasien tidak terindikasi terkena penyakit diabetes'
 
             st.success(diabetes_diagnosis)
-        else:
+    else:
             st.warning('Nilai Input tidak boleh bernilai negatif')
 
 if(selected == 'Prediksi Penyakit Jantung'):
@@ -115,7 +115,7 @@ if(selected == 'Prediksi Penyakit Jantung'):
         caa = st.number_input("Jumlah pembulu darah besar yang diwarnai dengan fluroskopi")
         thall = st.number_input("Hasil test thallium")
 
-        if age >= 0 and trtbps >= 0 and chol >= 0 and restecg >= 0 and thalach >= 0 and exng >= 0 and oldpeak >= 0 and slp >= 0 and caa >= 0 and thall >= 0:
+    if age >= 0 and trtbps >= 0 and chol >= 0 and restecg >= 0 and thalach >= 0 and exng >= 0 and oldpeak >= 0 and slp >= 0 and caa >= 0 and thall >= 0:
             button2 = st.button('Test Prediksi Penyakit Jantung')
 
             # Convert input values to numeric
@@ -140,7 +140,7 @@ if(selected == 'Prediksi Penyakit Jantung'):
 
                 # Menampilkan hasil prediksi
             st.success(heart_diagnosis)
-        else:
+    else:
             st.warning('Nilai Input tidak boleh bernilai negatif')
 
 if(selected == 'Prediksi Kualitas Air'):
@@ -174,7 +174,7 @@ if(selected == 'Prediksi Kualitas Air'):
         silver = st.number_input('Masukkan kadar silver')
         uranium = st.number_input('Masukkan kadar uranium')
 
-        if almunium >= 0 and amonia >= 0 and arsenic >= 0 and barium >= 0 and cadmium >= 0 and chloramine >= 0 and chromium >= 0 and copper >= 0 and flouride >= 0 and bacteria >= 0 and viruses >= 0 and lead >= 0 and nitrates >= 0 and nitrites >= 0 and mercury >= 0 and perchlorate >= 0 and radium >= 0 and selenium >= 0 and silver >= 0 and uranium >= 0:
+    if almunium >= 0 and amonia >= 0 and arsenic >= 0 and barium >= 0 and cadmium >= 0 and chloramine >= 0 and chromium >= 0 and copper >= 0 and flouride >= 0 and bacteria >= 0 and viruses >= 0 and lead >= 0 and nitrates >= 0 and nitrites >= 0 and mercury >= 0 and perchlorate >= 0 and radium >= 0 and selenium >= 0 and silver >= 0 and uranium >= 0:
 
             button3 = st.button('Kalkulasi hasil Prediksi kandungan air')
             input_data = [
@@ -190,7 +190,7 @@ if(selected == 'Prediksi Kualitas Air'):
                         water_status = "Kandungan air tidak aman"
                 
             st.success(water_status)
-        else:
+    else:
             st.warning('Nilai Input tidak boleh bernilai negatif')
 
 st.markdown(
@@ -199,7 +199,7 @@ st.markdown(
     Web ini di buat untuk memenuhi tugas mata kuliah Machine Learning, kegunaan dari web ini adalah untuk memprediksi beberapa hal seperti 
     - prediksi penyakit diabetes
     - prediksi penyakit jantung 
-    - prediksi kualitas air.
+    - prediksi kualitas air
 
     #### Kelompok 8
     - [Kukhuh Agung]
