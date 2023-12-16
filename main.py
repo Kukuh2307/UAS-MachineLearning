@@ -52,35 +52,37 @@ if(selected == 'Prediksi Penyakit Diabetes'):
             ['Female','Male'],
             index=0
         )
-        age = st.text_input('Masukkan umur')
-        hypertension = st.text_input('Masukkan Hypertension')
-        heart = st.text_input('Riwayat Jantung')
+        age = st.number_input('Masukkan umur')
+        hypertension = st.number_input('Masukkan Hypertension')
+        heart = st.number_input('Riwayat Jantung')
 
     with col2:
         smoking = st.selectbox(
             "Masukkan smoking history",
-            ['current','never','no info','former'],
+            ['no info','current','ever','never','former'],
             index=0
         )
-        bmi = st.text_input('Masukkan BMI')
-        hbaic = st.text_input('Masukkan HbAIc Level')
-        blood = st.text_input('Masukkan Bloood glucose level')
+        bmi = st.number_input('Masukkan BMI')
+        hbaic = st.number_input('Masukkan HbAIc Level')
+        blood = st.number_input('Masukkan Bloood glucose level')
 
     if gender and age and hypertension and heart and smoking and bmi and hbaic and blood :
 
         gender = 0 if gender == "Female" else 1 
 
-        smoking_mapping = {'current': 3, 'never': 2, 'no info': 0, 'former': 1}
+        smoking_mapping = {'current': 1, 'never': 4, 'no info': 0, 'former': 3, 'ever':2}
         smoking = smoking_mapping[smoking]
 
         if smoking == 'current':
-            smoking = 3
+            smoking = 1
         if smoking == 'never':
+            smoking = 4
+        if smoking == 'ever':
             smoking = 2
         if smoking == 'no info':
             smoking = 0
         if smoking == 'former':
-            smoking = 1
+            smoking = 3
         input_data = [
             float(gender),float(age),float(hypertension),float(heart),float(smoking),float(bmi),float(hbaic),float(blood)]
 
@@ -109,21 +111,21 @@ if(selected == 'Prediksi Penyakit Jantung'):
     col1, col2 = st.columns(2)
 
     with col1:
-        age = st.text_input('Masukkan Umur anda')
-        sex = st.text_input('Masukkan Jenis kelamin Male(1) Female(0)')
-        cp = st.text_input('Masukkan tipe nyeri dada range 1-4')
-        trtbps = st.text_input('Masukkan tekanan darah')
-        chol = st.text_input('Masukkan kolesterol')
-        fbs = st.text_input('Masukkan gula darah')
-        restecg = st.text_input('Masukkan hasil elektrokardiografi')
+        age = st.number_input('Masukkan Umur anda')
+        sex = st.number_input('Masukkan Jenis kelamin Male(1) Female(0)')
+        cp = st.number_input('Masukkan tipe nyeri dada range 1-4')
+        trtbps = st.number_input('Masukkan tekanan darah')
+        chol = st.number_input('Masukkan kolesterol')
+        fbs = st.number_input('Masukkan gula darah')
+        restecg = st.number_input('Masukkan hasil elektrokardiografi')
 
     with col2:
-        thalach = st.text_input('Masukkan denyut jantung maksimal')
-        exng = st.text_input('Masukkan Angina akibat olahraga')
-        oldpeak = st.text_input('Depresi disebabkan oleh olahraga')
-        slp = st.text_input('Kemiringan puncak latihan segmen')
-        caa = st.text_input("Jumlah pembulu darah besar yang diwarnai dengan fluroskopi")
-        thall = st.text_input("Hasil test thallium")
+        thalach = st.number_input('Masukkan denyut jantung maksimal')
+        exng = st.number_input('Masukkan Angina akibat olahraga')
+        oldpeak = st.number_input('Depresi disebabkan oleh olahraga')
+        slp = st.number_input('Kemiringan puncak latihan segmen')
+        caa = st.number_input("Jumlah pembulu darah besar yang diwarnai dengan fluroskopi")
+        thall = st.number_input("Hasil test thallium")
 
     # Convert input values to numeric
     if age and sex and cp and trtbps and chol and fbs and restecg and thalach and exng and oldpeak and slp and caa and thall:
@@ -158,28 +160,28 @@ if(selected == 'Prediksi Kualitas Air'):
     
     col1,col2 = st.columns(2)
     with col1:
-        almunium = st.text_input('Masukkan kadar almunium')
-        amonia = st.text_input('Masukkan kadar amonia')
-        arsenic = st.text_input('Masukkan kadaar arsenic')
-        barium = st.text_input('Masukkan kadar barium')
-        cadmium = st.text_input('Masukkan kadar cadmium')
-        chloramine = st.text_input('Masukkan kadar chloramine')
-        chromium = st.text_input('Masukkan kadar chromium')
-        copper = st.text_input('Masukkan kadar copper')
-        flouride = st.text_input('Masukkan kadar flouride')
-        bacteria = st.text_input('Masukkan kadar bacteria')
+        almunium = st.number_input('Masukkan kadar almunium')
+        amonia = st.number_input('Masukkan kadar amonia')
+        arsenic = st.number_input('Masukkan kadaar arsenic')
+        barium = st.number_input('Masukkan kadar barium')
+        cadmium = st.number_input('Masukkan kadar cadmium')
+        chloramine = st.number_input('Masukkan kadar chloramine')
+        chromium = st.number_input('Masukkan kadar chromium')
+        copper = st.number_input('Masukkan kadar copper')
+        flouride = st.number_input('Masukkan kadar flouride')
+        bacteria = st.number_input('Masukkan kadar bacteria')
 
     with col2:
-        viruses = st.text_input('Masukkan kadar viruses')
-        lead = st.text_input('Masukkan kadar lead')
-        nitrates = st.text_input('Masukkan kadar nitrates')
-        nitrites = st.text_input('Masukkan kadar nitrites')
-        mercury = st.text_input('Masukkan kadar mercury')
-        perchlorate = st.text_input('Masukkan kadar perchlorate')
-        radium = st.text_input('Masukkan kadar radium')
-        selenium = st.text_input('Masukkan kadar selenium')
-        silver = st.text_input('Masukkan kadar silver')
-        uranium = st.text_input('Masukkan kadar uranium')
+        viruses = st.number_input('Masukkan kadar viruses')
+        lead = st.number_input('Masukkan kadar lead')
+        nitrates = st.number_input('Masukkan kadar nitrates')
+        nitrites = st.number_input('Masukkan kadar nitrites')
+        mercury = st.number_input('Masukkan kadar mercury')
+        perchlorate = st.number_input('Masukkan kadar perchlorate')
+        radium = st.number_input('Masukkan kadar radium')
+        selenium = st.number_input('Masukkan kadar selenium')
+        silver = st.number_input('Masukkan kadar silver')
+        uranium = st.number_input('Masukkan kadar uranium')
 
     if almunium and amonia and arsenic and barium and cadmium and chloramine and chromium and copper and flouride and bacteria and viruses and lead and nitrates and nitrites and mercury and perchlorate and radium and selenium and silver and uranium:
         input_data = [
