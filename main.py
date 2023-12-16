@@ -24,7 +24,7 @@ if(selected == 'Prediksi Penyakit Diabetes'):
 
     st.title('ID3 - Prediksi Penyakit diabetes')
 
-    col1,col2 = st.columns(2)
+    col1,col2 = st.columns([1,1])
 
     with col1:
         gender = st.selectbox(
@@ -35,7 +35,6 @@ if(selected == 'Prediksi Penyakit Diabetes'):
         age = st.number_input('Masukkan umur')
         hypertension = st.number_input('Masukkan Hypertension')
         heart = st.number_input('Riwayat Jantung')
-        button1 = st.button('Test Prediksi Penyakit Diabetes')
 
     with col2:
         smoking = st.selectbox(
@@ -46,28 +45,30 @@ if(selected == 'Prediksi Penyakit Diabetes'):
         bmi = st.number_input('Masukkan BMI')
         hbaic = st.number_input('Masukkan HbAIc Level')
         blood = st.number_input('Masukkan Bloood glucose level')
+    
+    # with col3:
+    button1 = st.button('Test Prediksi Penyakit Diabetes')
+    gender = 0 if gender == "Female" else 1 
 
-        gender = 0 if gender == "Female" else 1 
+    smoking_mapping = {'current': 1, 'never': 4, 'no info': 0, 'former': 3, 'ever':2}
+    smoking = smoking_mapping[smoking]
 
-        smoking_mapping = {'current': 1, 'never': 4, 'no info': 0, 'former': 3, 'ever':2}
-        smoking = smoking_mapping[smoking]
-
-        if smoking == 'current':
+    if smoking == 'current':
             smoking = 1
-        if smoking == 'never':
+    if smoking == 'never':
             smoking = 4
-        if smoking == 'ever':
+    if smoking == 'ever':
             smoking = 2
-        if smoking == 'no info':
+    if smoking == 'no info':
             smoking = 0
-        if smoking == 'former':
+    if smoking == 'former':
             smoking = 3
-        input_data = [
+    input_data = [
             float(gender),float(age),float(hypertension),float(heart),float(smoking),float(bmi),float(hbaic),float(blood)]
 
-        diabetes_diagnosis = ''
+    diabetes_diagnosis = ''
 
-        if button1:
+    if button1:
             diabetes_predict = id3Model.predict([input_data])
 
             if diabetes_predict[0] == 1:
@@ -75,7 +76,7 @@ if(selected == 'Prediksi Penyakit Diabetes'):
             else:
                 diabetes_diagnosis = 'Pasien tidak terindikasi terkena penyakit diabetes'
 
-        st.success(diabetes_diagnosis)
+    st.success(diabetes_diagnosis)
 
 if(selected == 'Prediksi Penyakit Jantung'):
     # Model = '/home/kisawa16/Documents/KULIAH/MACHINE LEARNING/UTS/NAIVE BAYES/naive_bayes_model.pkl'
@@ -102,7 +103,6 @@ if(selected == 'Prediksi Penyakit Jantung'):
         chol = st.number_input('Masukkan kolesterol')
         fbs = st.number_input('Masukkan gula darah')
         restecg = st.number_input('Masukkan hasil elektrokardiografi')
-        button2 = st.button('Test Prediksi Penyakit Jantung')
 
     with col2:
         thalach = st.number_input('Masukkan denyut jantung maksimal')
@@ -111,6 +111,7 @@ if(selected == 'Prediksi Penyakit Jantung'):
         slp = st.number_input('Kemiringan puncak latihan segmen')
         caa = st.number_input("Jumlah pembulu darah besar yang diwarnai dengan fluroskopi")
         thall = st.number_input("Hasil test thallium")
+    button2 = st.button('Test Prediksi Penyakit Jantung')
 
     # Convert input values to numeric
     sex = 0 if sex == "Female" else 1 
@@ -153,7 +154,6 @@ if(selected == 'Prediksi Kualitas Air'):
         copper = st.number_input('Masukkan kadar copper')
         flouride = st.number_input('Masukkan kadar flouride')
         bacteria = st.number_input('Masukkan kadar bacteria')
-        button3 = st.button('Kalkulasi hasil Prediksi kandungan air')
 
     with col2:
         viruses = st.number_input('Masukkan kadar viruses')
@@ -167,12 +167,13 @@ if(selected == 'Prediksi Kualitas Air'):
         silver = st.number_input('Masukkan kadar silver')
         uranium = st.number_input('Masukkan kadar uranium')
 
-        input_data = [
+    button3 = st.button('Kalkulasi hasil Prediksi kandungan air')
+    input_data = [
             float(almunium),float(amonia),float(arsenic),float(barium),float(cadmium),float(chloramine),float(chromium),float(copper),float(flouride),float(bacteria),float(viruses),float(lead),float(nitrates),float(nitrites),float(mercury),float(perchlorate),float(radium),float(selenium),float(silver),float(uranium)
         ]
 
-        water_status = ''
-        if button3:
+    water_status = ''
+    if button3:
             water_predict = knnModel.predict([input_data])
 
             if water_predict[0] == 1:
@@ -180,7 +181,7 @@ if(selected == 'Prediksi Kualitas Air'):
             else:
                 water_status = "Kandungan air tidak aman"
         
-        st.success(water_status)
+    st.success(water_status)
 
 st.markdown(
     """
