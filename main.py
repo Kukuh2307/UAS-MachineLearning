@@ -45,38 +45,41 @@ if(selected == 'Prediksi Penyakit Diabetes'):
         bmi = st.number_input('Masukkan BMI')
         hbaic = st.number_input('Masukkan HbAIc Level')
         blood = st.number_input('Masukkan Bloood glucose level')
-    
-    # with col3:
-    button1 = st.button('Test Prediksi Penyakit Diabetes')
-    gender = 0 if gender == "Female" else 1 
 
-    smoking_mapping = {'current': 1, 'never': 4, 'no info': 0, 'former': 3, 'ever':2}
-    smoking = smoking_mapping[smoking]
+        if age >= 0 and hypertension >= 0 and heart >= 0 and bmi >= 0 and hbaic >= 0 and blood >= 0:
+            # with col3:
+            button1 = st.button('Test Prediksi Penyakit Diabetes')
+            gender = 0 if gender == "Female" else 1 
 
-    if smoking == 'current':
-            smoking = 1
-    if smoking == 'never':
-            smoking = 4
-    if smoking == 'ever':
-            smoking = 2
-    if smoking == 'no info':
-            smoking = 0
-    if smoking == 'former':
-            smoking = 3
-    input_data = [
-            float(gender),float(age),float(hypertension),float(heart),float(smoking),float(bmi),float(hbaic),float(blood)]
+            smoking_mapping = {'current': 1, 'never': 4, 'no info': 0, 'former': 3, 'ever':2}
+            smoking = smoking_mapping[smoking]
 
-    diabetes_diagnosis = ''
+            if smoking == 'current':
+                    smoking = 1
+            if smoking == 'never':
+                    smoking = 4
+            if smoking == 'ever':
+                    smoking = 2
+            if smoking == 'no info':
+                    smoking = 0
+            if smoking == 'former':
+                    smoking = 3
+            input_data = [
+                    float(gender),float(age),float(hypertension),float(heart),float(smoking),float(bmi),float(hbaic),float(blood)]
 
-    if button1:
-            diabetes_predict = id3Model.predict([input_data])
+            diabetes_diagnosis = ''
 
-            if diabetes_predict[0] == 1:
-                diabetes_diagnosis = 'Pasien terindikasi terkena penyakit diabetes'
-            else:
-                diabetes_diagnosis = 'Pasien tidak terindikasi terkena penyakit diabetes'
+            if button1:
+                    diabetes_predict = id3Model.predict([input_data])
 
-    st.success(diabetes_diagnosis)
+                    if diabetes_predict[0] == 1:
+                        diabetes_diagnosis = 'Pasien terindikasi terkena penyakit diabetes'
+                    else:
+                        diabetes_diagnosis = 'Pasien tidak terindikasi terkena penyakit diabetes'
+
+            st.success(diabetes_diagnosis)
+        else:
+            st.warning('Nilai Input tidak boleh bernilai negatif')
 
 if(selected == 'Prediksi Penyakit Jantung'):
     # Model = '/home/kisawa16/Documents/KULIAH/MACHINE LEARNING/UTS/NAIVE BAYES/naive_bayes_model.pkl'
@@ -111,30 +114,34 @@ if(selected == 'Prediksi Penyakit Jantung'):
         slp = st.number_input('Kemiringan puncak latihan segmen')
         caa = st.number_input("Jumlah pembulu darah besar yang diwarnai dengan fluroskopi")
         thall = st.number_input("Hasil test thallium")
-    button2 = st.button('Test Prediksi Penyakit Jantung')
 
-    # Convert input values to numeric
-    sex = 0 if sex == "Female" else 1 
-    input_data = [
-            float(age), float(sex), float(cp), float(trtbps), float(chol), float(fbs),
-            float(restecg), float(thalach), float(exng), float(oldpeak), float(slp), 
-            float(caa), float(thall)
-        ]
+        if age >= 0 and trtbps >= 0 and chol >= 0 and restecg >= 0 and thalach >= 0 and exng >= 0 and oldpeak >= 0 and slp >= 0 and caa >= 0 and thall >= 0:
+            button2 = st.button('Test Prediksi Penyakit Jantung')
 
-        # code prediksi
-    heart_diagnosis = ''
+            # Convert input values to numeric
+            sex = 0 if sex == "Female" else 1 
+            input_data = [
+                    float(age), float(sex), float(cp), float(trtbps), float(chol), float(fbs),
+                    float(restecg), float(thalach), float(exng), float(oldpeak), float(slp), 
+                    float(caa), float(thall)
+                ]
 
-        # tombol prediksi
-    if button2:
-            heart_predict = naiveModel.predict([input_data])
+                # code prediksi
+            heart_diagnosis = ''
 
-            if heart_predict[0] == 1:
-                heart_diagnosis = "Pasien terindikasi terkena penyakit jantung"
-            else:
-                heart_diagnosis = "Pasien tidak terindikasi terkena penyakit jantung"
+                # tombol prediksi
+            if button2:
+                    heart_predict = naiveModel.predict([input_data])
 
-        # Menampilkan hasil prediksi
-    st.success(heart_diagnosis)
+                    if heart_predict[0] == 1:
+                        heart_diagnosis = "Pasien terindikasi terkena penyakit jantung"
+                    else:
+                        heart_diagnosis = "Pasien tidak terindikasi terkena penyakit jantung"
+
+                # Menampilkan hasil prediksi
+            st.success(heart_diagnosis)
+        else:
+            st.warning('Nilai Input tidak boleh bernilai negatif')
 
 if(selected == 'Prediksi Kualitas Air'):
     # Model = '/home/kisawa16/Documents/KULIAH/MACHINE LEARNING/UTS/KNN/knn_model.pkl'
@@ -167,26 +174,32 @@ if(selected == 'Prediksi Kualitas Air'):
         silver = st.number_input('Masukkan kadar silver')
         uranium = st.number_input('Masukkan kadar uranium')
 
-    button3 = st.button('Kalkulasi hasil Prediksi kandungan air')
-    input_data = [
-            float(almunium),float(amonia),float(arsenic),float(barium),float(cadmium),float(chloramine),float(chromium),float(copper),float(flouride),float(bacteria),float(viruses),float(lead),float(nitrates),float(nitrites),float(mercury),float(perchlorate),float(radium),float(selenium),float(silver),float(uranium)
-        ]
+        if almunium >= 0 and amonia >= 0 and arsenic >= 0 and barium >= 0 and cadmium >= 0 and chloramine >= 0 and chromium >= 0 and copper >= 0 and flouride >= 0 and bacteria >= 0 and viruses >= 0 and lead >= 0 and nitrates >= 0 and nitrites >= 0 and mercury >= 0 and perchlorate >= 0 and radium >= 0 and selenium >= 0 and silver >= 0 and uranium >= 0:
 
-    water_status = ''
-    if button3:
-            water_predict = knnModel.predict([input_data])
+            button3 = st.button('Kalkulasi hasil Prediksi kandungan air')
+            input_data = [
+            float(almunium),float(amonia),float(arsenic),float(barium),float(cadmium),float(chloramine),float(chromium),float(copper),float(flouride),float(bacteria),float(viruses),float(lead),float(nitrates),float(nitrites),float(mercury),float(perchlorate),float(radium),float(selenium),float(silver),float(uranium)]
 
-            if water_predict[0] == 1:
-                water_status = "Kandungan air aman"
-            else:
-                water_status = "Kandungan air tidak aman"
-        
-    st.success(water_status)
+            water_status = ''
+            if button3:
+                    water_predict = knnModel.predict([input_data])
+
+                    if water_predict[0] == 1:
+                        water_status = "Kandungan air aman"
+                    else:
+                        water_status = "Kandungan air tidak aman"
+                
+            st.success(water_status)
+        else:
+            st.warning('Nilai Input tidak boleh bernilai negatif')
 
 st.markdown(
     """
     #### Tentang Web
-    Web ini di buat untuk memenuhi tugas mata kuliah Machine Learning, kegunaan dari web ini adalah untuk memprediksi beberapa hal seperti prediksi penyakit diabetes,prediksi penyakit jantung dan prediksi kualitas air.
+    Web ini di buat untuk memenuhi tugas mata kuliah Machine Learning, kegunaan dari web ini adalah untuk memprediksi beberapa hal seperti 
+    - prediksi penyakit diabetes
+    - prediksi penyakit jantung 
+    - prediksi kualitas air.
 
     #### Kelompok 8
     - [Kukhuh Agung]
