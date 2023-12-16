@@ -188,8 +188,8 @@ st.markdown(
     Web ini di buat untuk memenuhi tugas mata kuliah Machine Learning, kegunaan dari web ini adalah untuk memprediksi beberapa hal seperti prediksi penyakit diabetes,prediksi penyakit jantung dan prediksi kualitas air.
 
     #### Kelompok 8
-    - [Miftahul Huda]
     - [Kukhuh Agung]
+    - [Miftahul Huda]
     - [Ahmad Firsta]
     """
 )
