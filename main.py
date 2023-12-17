@@ -39,7 +39,7 @@ if(selected == 'Prediksi Penyakit Diabetes'):
     with col2:
         smoking = st.selectbox(
             "Masukkan smoking history",
-            ['no info','current','ever','never','former'],
+            ['no info','current','ever','never','former','not current'],
             index=0
         )
         bmi = st.number_input('Masukkan BMI')
@@ -51,11 +51,13 @@ if(selected == 'Prediksi Penyakit Diabetes'):
             button1 = st.button('Test Prediksi Penyakit Diabetes')
             gender = 0 if gender == "Female" else 1 
 
-            smoking_mapping = {'current': 1, 'never': 4, 'no info': 0, 'former': 3, 'ever':2}
+            smoking_mapping = {'current': 1, 'never': 4, 'no info': 0, 'former': 3, 'ever':2,'not current':5}
             smoking = smoking_mapping[smoking]
 
             if smoking == 'current':
                     smoking = 1
+            if smoking == 'not current':
+                    smoking = 5
             if smoking == 'never':
                     smoking = 4
             if smoking == 'ever':
