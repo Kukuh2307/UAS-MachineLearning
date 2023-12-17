@@ -74,10 +74,11 @@ if(selected == 'Prediksi Penyakit Diabetes'):
 
                     if diabetes_predict[0] == 1:
                         diabetes_diagnosis = 'Pasien terindikasi terkena penyakit diabetes'
-                        st.success(diabetes_diagnosis)
+                        st.warning(diabetes_diagnosis)
                     else:
                         diabetes_diagnosis = 'Pasien tidak terindikasi terkena penyakit diabetes'
-                        st.warning(diabetes_diagnosis)
+                        st.success(diabetes_diagnosis)
+                        
             
     else:
             st.warning('Nilai Input tidak boleh bernilai negatif')
@@ -137,11 +138,11 @@ if(selected == 'Prediksi Penyakit Jantung'):
                     if heart_predict[0] == 1:
                         heart_diagnosis = "Pasien terindikasi terkena penyakit jantung"
                         # Menampilkan hasil prediksi
-                        st.success(heart_diagnosis)
+                        st.warning(heart_diagnosis)
                     else:
                         heart_diagnosis = "Pasien tidak terindikasi terkena penyakit jantung"
                         # Menampilkan hasil prediksi
-                        st.warning(heart_diagnosis)
+                        st.success(heart_diagnosis)
     else:
             st.warning('Nilai Input tidak boleh bernilai negatif')
 
